@@ -1,48 +1,49 @@
 document.getElementById('deposit-btn').addEventListener('click', function(){
-    const amountDeposit = document.getElementById('deposit-amount');
-    const depositAmount = amountDeposit.value;
-const depositConvert = parseFloat(depositAmount);
+  const depositAmount = document.getElementById('deposit-amount');
+  const depositAmountText = depositAmount.value;
+  const depositAmountConvert = parseFloat(depositAmountText);
 
-    const depositTotal = document.getElementById('deposit-total');
-const previousAmount = depositTotal.innerText;
-const newDepositConvert = parseFloat(previousAmount);
-const currentAmount = newDepositConvert + depositConvert;
 
-    depositTotal.innerText = currentAmount;
+  const depositTotal = document.getElementById('deposit-total');
+const depositTotalText = depositTotal.innerText;
+const depositTotalConvert = parseFloat(depositTotalText);
+const depositTotalAmount = depositTotalConvert + depositAmountConvert;
+depositTotal.innerText = depositTotalAmount;
 
-// ...........balance total...............//
-    const balanceTotal = document.getElementById('balance-total');
-    const balanceAmount = balanceTotal.innerText;
-    const balanceConvert = parseFloat(balanceAmount);
-    const newBalance = depositConvert;
-     + balanceConvert;
-    balanceTotal.innerText = newBalance;
 
-    amountDeposit.value = '';
+// .............update balance.................//
+const balanceTotal = document.getElementById('balance-total');
+const balanceTotalText = balanceTotal.innerText;
+const balanceConvert = parseFloat(balanceTotalText);
+const balanceTotalAmount = balanceConvert + depositAmountConvert;
+balanceTotal.innerText = balanceTotalAmount;
+
+depositAmount.value = '';
 
     
 })
 
-// .......withdraw part...............//
+// ...............withdraw part....................//
 document.getElementById('withdraw-button').addEventListener('click', function(){
-    const amountWithdraw = document.getElementById('withdraw-amount');
-    const withdrawAmount = amountWithdraw.value;
-    const withdrawAmountConvert = parseFloat(withdrawAmount);
+    const withdrawAmount = document.getElementById('withdraw-amount');
+    const withdrawAmountText = withdrawAmount.value;
+    const withdrawAmountConvert = parseFloat(withdrawAmountText);
 
     const withdrawTotal = document.getElementById('withdraw-total');
-    const previousWithdrawAmount = withdrawTotal.innerText;
-const newWithdrawConvert = parseFloat(previousWithdrawAmount);
-const currentWithdrawAmount = newWithdrawConvert + withdrawAmountConvert;
-withdrawTotal.innerText = currentWithdrawAmount;
+    const withdrawTotalText = withdrawTotal.innerText;
+    const withdrawTotalConvert = parseFloat(withdrawTotalText);
+    const withdrawTotalAmount = withdrawTotalConvert + withdrawAmountConvert;
+    withdrawTotal.innerText = withdrawTotalAmount;
+console.log(withdrawTotalText);
 
-// .........balance cutout............//
-const withdrawBalanceTotal = document.getElementById('balance-total');
-const balanceTotalText = withdrawBalanceTotal.innerText;
-const convertBalance = parseFloat(balanceTotalText);
-const balanceNew = convertBalance - currentWithdrawAmount;
-withdrawBalanceTotal.innerText = balanceNew;
+// .............update balance.................//
+const balanceAfterWithdraw = document.getElementById('balance-total');
+const balanceAfterWithdrawText = balanceAfterWithdraw.innerText;
+const balanceAfterWithdrawConvert = parseFloat(balanceAfterWithdrawText);
+const totalBalanceAfterWithdraw =  balanceAfterWithdrawConvert - withdrawAmountConvert;
+balanceAfterWithdraw.innerText = totalBalanceAfterWithdraw;
 
 
-    amountWithdraw.value = '';
+    withdrawAmount.value = '';
+
 })
-
